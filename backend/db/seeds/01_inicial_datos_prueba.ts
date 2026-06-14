@@ -1,14 +1,14 @@
 import { Knex } from "knex";
+import bcrypt from "bcryptjs"; // <-- NUEVA IMPORTACIÓN
 
 export async function seed(knex: Knex): Promise<void> {
-    // 1. Limpiar las tablas existentes para evitar duplicados si corremos el seeder varias veces
     await knex("calificaciones").del();
     await knex("inscripciones").del();
     await knex("materias").del();
     await knex("usuarios").del();
 
-    // Este es el hash de bcrypt para la contraseña "123456"
-    const password_hash = "$2b$10$EP/kFf/O2Z4H2D3x9L7g/eBf2b4U1o8mB7vD0rY7.w9q6mJ5z8uKG";
+    // Generamos el hash real de "123456" en este mismo instante
+    const password_hash = bcrypt.hashSync("123456", 10);
 
     // 2. Insertar Usuarios (Forzamos los IDs para poder relacionarlos fácilmente)
     await knex("usuarios").insert([

@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { sequelize } from './config/database';
+import authRoutes from './routes/authRoutes';
 
 dotenv.config();
 
@@ -11,6 +12,9 @@ const PORT = process.env.PORT || 3000;
 // Middlewares globales
 app.use(cors());
 app.use(express.json());
+
+// Rutas
+app.use('/api/auth', authRoutes);
 
 // Ruta de prueba
 app.get('/api', (req, res) => {

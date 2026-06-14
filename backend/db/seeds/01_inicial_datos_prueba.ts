@@ -1,5 +1,5 @@
 import { Knex } from "knex";
-import bcrypt from "bcryptjs"; // <-- NUEVA IMPORTACIÓN
+import bcrypt from "bcryptjs";
 
 export async function seed(knex: Knex): Promise<void> {
     await knex("calificaciones").del();
@@ -7,7 +7,6 @@ export async function seed(knex: Knex): Promise<void> {
     await knex("materias").del();
     await knex("usuarios").del();
 
-    // Generamos el hash real de "123456" en este mismo instante
     const password_hash = bcrypt.hashSync("123456", 10);
 
     // 2. Insertar Usuarios (Forzamos los IDs para poder relacionarlos fácilmente)

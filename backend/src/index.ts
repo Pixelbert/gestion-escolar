@@ -3,6 +3,7 @@ import cors from 'cors';
 import * as dotenv from 'dotenv';
 import { sequelize } from './config/database';
 import authRoutes from './routes/authRoutes';
+import maestroRoutes from './routes/maestroRoutes';
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Rutas
 app.use('/api/auth', authRoutes);
+app.use('/api/maestros', maestroRoutes);
 
 // Ruta de prueba
 app.get('/api', (req, res) => {

@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv';
 import { sequelize } from './config/database';
 import authRoutes from './routes/authRoutes';
 import maestroRoutes from './routes/maestroRoutes';
+import alumnoRoutes from './routes/alumnoRoutes';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 // Rutas
 app.use('/api/auth', authRoutes);
 app.use('/api/maestros', maestroRoutes);
+app.use('/api/alumnos', alumnoRoutes);
 
 // Ruta de prueba
 app.get('/api', (req, res) => {

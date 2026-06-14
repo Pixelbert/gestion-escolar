@@ -1,5 +1,11 @@
 import { Router } from 'express';
-import { getAlumnos, getMateriasAsignadas, registrarCalificacion } from '../controllers/maestroController';
+import { 
+    getAlumnos, 
+    getMateriasAsignadas, 
+    registrarCalificacion,
+    getPromediosPorAlumno,
+    exportarCalificacionesCSV
+} from '../controllers/maestroController';
 import { verificarToken, verificarRol } from '../middlewares/authMiddleware';
 
 const router = Router();
@@ -10,5 +16,7 @@ router.use(verificarToken, verificarRol(['maestro']));
 router.get('/alumnos', getAlumnos);
 router.get('/materias', getMateriasAsignadas);
 router.post('/calificaciones', registrarCalificacion);
+router.get('/promedios', getPromediosPorAlumno);
+router.get('/exportar', exportarCalificacionesCSV);
 
 export default router;

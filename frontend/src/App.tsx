@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Login } from './pages/Login';
 import { MaestroDashboard } from './pages/MaestroDashboard';
+import { AlumnoDashboard } from './pages/AlumnoDashboard';
 
 function App() {
   return (
@@ -8,11 +9,11 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         
-        {/* Aquí conectamos nuestro nuevo componente */}
+        {/* Ruta de MaestroDashboard*/}
         <Route path="/maestro/dashboard" element={<MaestroDashboard />} />
         
-        {/* Este todavía es temporal hasta que hagamos el del alumno */}
-        <Route path="/alumno/dashboard" element={<h1 className="text-center mt-10 text-2xl">Dashboard Alumno 🎓</h1>} />
+        {/* Ruta de AlumnoDashboard */}
+        <Route path="/alumno/dashboard" element={<AlumnoDashboard />} />
         
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>

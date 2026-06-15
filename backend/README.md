@@ -37,6 +37,14 @@ API RESTful construida con Node.js, Express, TypeScript y PostgreSQL. Utiliza Kn
    npx knex seed:run
    \`\`\`
 
+## 🛡️ Decisiones Técnicas y Seguridad
+
+### Autenticación (JWT)
+El sistema utiliza JSON Web Tokens para manejar las sesiones. Se ha configurado un **tiempo de expiración de 2 horas (`expiresIn: '2h'`)** por las siguientes razones de negocio y seguridad:
+
+1. **Equilibrio de Usabilidad:** El flujo de captura de calificaciones de un docente promedio requiere sesiones de trabajo ininterrumpidas. 2 horas previenen interrupciones frustrantes por cierres de sesión inesperados a mitad del trabajo.
+2. **Mitigación de Riesgos en Entornos Compartidos:** En el contexto escolar, los usuarios suelen acceder desde laboratorios o salas de maestros (equipos compartidos). Si un usuario olvida cerrar sesión explícitamente, la corta vida del token asegura que la ventana de vulnerabilidad para modificaciones no autorizadas (Cross-Site Scripting o secuestro de sesión física) se cierre automáticamente.
+
 ## Ejecución del Servidor
 
 Para iniciar el servidor en modo de desarrollo (con recarga automática):

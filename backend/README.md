@@ -1,5 +1,11 @@
 # Backend - Sistema de Gestión Escolar
 
+**Proyecto Desplegado**
+- **Frontend (Vercel):** https://gestion-escolar-five.vercel.app/
+- **Backend API (Render):** https://gestion-escolar-backend-p49i.onrender.com/api
+
+*(Credenciales de prueba: `alan@ua.edu` [Maestro] / `alberto@ua.edu` [Alumno] - Contraseña: `123456`)*
+
 API RESTful construida con Node.js, Express, TypeScript y PostgreSQL. Utiliza Knex para el manejo de migraciones y seeders, y Sequelize como ORM para la lógica de negocio.
 
 ## Requisitos Previos

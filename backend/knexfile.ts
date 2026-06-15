@@ -1,30 +1,26 @@
 import type { Knex } from "knex";
-import * as dotenv from "dotenv";
-
-// Cargar las variables del archivo .env
+import dotenv from "dotenv";
 dotenv.config();
 
 const config: { [key: string]: Knex.Config } = {
   development: {
     client: "postgresql",
-    connection: {
-      host: process.env.DB_HOST as string,
-      port: Number(process.env.DB_PORT) || 5432,
-      database: process.env.DB_NAME as string,
-      user: process.env.DB_USER as string,
-      password: process.env.DB_PASSWORD as string
-    },
-    pool: {
-      min: 2,
-      max: 10
+    connection: process.env.DATABASE_URL ? {
+        connectionString: process.env.DATABASE_URL,
+        ssl: { rejectUnauthorized: false }
+    } : {
+        database: process.env.DB_NAME,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        host: process.env.DB_HOST,
+        port: Number(process.env.DB_PORT),
     },
     migrations: {
-      tableName: "knex_migrations",
-      directory: "./db/migrations"
+      directory: "./db/migrations",
     },
     seeds: {
-      directory: "./db/seeds"
-    }
+      directory: "./db/seeds",
+    },
   }
 };
 

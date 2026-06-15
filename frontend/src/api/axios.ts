@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Creamos una instancia base apuntando a nuestro backend
 const api = axios.create({
-    baseURL: 'https://gestion-escolar-backend-p49i.onrender.com',
+    baseURL: 'https://gestion-escolar-backend-p49i.onrender.com/api',
 });
 
 // Interceptor: Antes de que cualquier petición salga, verificamos si hay un token guardado
